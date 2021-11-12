@@ -6,18 +6,14 @@ import numpy as np
 import os
 import open3d
 
-from datetime import datetime
-sys.path.append(r"C:\Coding\Python\Programs_Sofien")
-os.getcwd()
-
-SAVE_PATH = "D:" # todo add path
+SAVE_PATH = "D:"
 
 if __name__ == '__main__':
 
     camera = CameraClient()
     save_file = True
     # camera ip should be modified to actual ip address
-    camera_ip = "192.168.3.226" # todo change IP
+    camera_ip = "192.168.3.226"
     # always set ip before do anything else
     if not camera.connect(camera_ip):
         exit(-1)
@@ -32,9 +28,6 @@ if __name__ == '__main__':
     # capture depth image and color image and save them
     depth = camera.captureDepthImg()
     color = camera.captureColorImg()
-    # call time
-    now = datetime.now()
-    date= now.strftime("%Y%m%d_%H%M%S")
 
     if len(depth) == 0 or len(color) == 0:
         exit(-2)
@@ -42,8 +35,8 @@ if __name__ == '__main__':
     if save_file:
         if not os.path.exists(SAVE_PATH):
             os.makedirs(SAVE_PATH)
-        cv2.imwrite(SAVE_PATH + "\mechmind_depth" + date + ".png", depth)
-        cv2.imwrite(SAVE_PATH + "\mechmind_color" + date + ".jpg", color)
+        cv2.imwrite(SAVE_PATH + "/mechmind_depth.png", depth)
+        cv2.imwrite(SAVE_PATH + "/mechmind_color.jpg", color)
     # set some parameters of camera, you can refer to parameters' names in Mech_eye
 
     # get rgb point cloud. Using open3d to store and visualize the cloud.
@@ -54,4 +47,4 @@ if __name__ == '__main__':
     print(camera.getParameter("scan2dExposureMode"))
     print(camera.setParameter("scan2dExposureTime",20)) # set exposure time to 20ms
     print(camera.getParameter("scan2dExposureTime"))
-    exit(0)
+    exit(0
