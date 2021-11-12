@@ -47,4 +47,4 @@ if __name__ == '__main__':
     print(camera.getParameter("scan2dExposureMode"))
     print(camera.setParameter("scan2dExposureTime",20)) # set exposure time to 20ms
     print(camera.getParameter("scan2dExposureTime"))
-    exit(0
+    exit(0)
